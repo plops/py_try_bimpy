@@ -117,6 +117,17 @@ Options:
 	    (setf args (docopt.docopt __doc__ :version (string "0.0.1")))
 	    (if (aref args (string "--verbose"))
 		(print args))
-	    
+	    (setf ctx (b.Context)
+		  )
+	    (ctx.init 600 600 (string "Hello"))
+	    (setf str (b.String)
+		  f (b.Float))
+	    (while (not (ctx.should_close))
+	      (with ctx
+		    (b.text (string "hello world"))
+		    (if (b.button (string "OK"))
+			(print str.value))
+		    (b.input_text (string "string") str 256)
+		    (b.slider_float (string "float") f 0.0 1.0)))
 	    )))
     (write-source *source* code)))

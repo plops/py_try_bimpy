@@ -41,3 +41,14 @@ def plog(msg):
 args=docopt.docopt(__doc__, version="0.0.1")
 if ( args["--verbose"] ):
     print(args)
+ctx=b.Context()
+ctx.init(600, 600, "Hello")
+str=b.String()
+f=b.Float()
+while (not(ctx.should_close())):
+    with ctx:
+        b.text("hello world")
+        if ( b.button("OK") ):
+            print(str.value)
+        b.input_text("string", str, 256)
+        b.slider_float("float", f, (0.0e+0), (1.e+0))
